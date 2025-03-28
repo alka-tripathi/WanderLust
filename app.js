@@ -1,0 +1,88 @@
+const express = require("express");
+const app=express();
+const Listing = require("./models/listing");
+
+const path = require("path");
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+
+app.use(express.urlencoded({extended:true}));
+
+const mongoose = require("mongoose");
+async function main() {
+    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  
+  }
+
+
+
+main()
+.then(()=>{
+    console.log("Database is connected");
+})
+.catch(err => console.log(err));
+
+
+
+app.get("/",(req,res)=>{
+    res.send("Hi i am root");
+})
+
+app.listen(8080,()=>{
+    console.log("server is listening to port 8080");
+});
+
+// app.get("/testListing", async(req,res)=>{
+// let sampleListing = new Listing({
+//     title:"My new Villa",
+//     description:"By the beach",
+//     price:1200,
+//     location:"Calangutes",
+//     country:"India",
+// });
+// await sampleListing.save()
+// .then((res)=>{
+//     console.log("save");
+// })
+// .catch((err)=>{
+//     console.log(err);
+// })
+// });
+
+//GET route
+app.get("/listings",async(req,res)=>{
+ const allListing=await  Listing.find({});
+ res.render("listing/index.ejs",{allListing});
+  
+})
+
+//Create: New And Create Route
+app.get("/listings/new",(req,res)=>{
+    res.render("listing/new.ejs");
+})
+
+//POST request
+app.post("/listings",async(req,res)=>{
+    // let {title,description,image,price,location,country}=req.body;
+    // let listing=req.body.listing;
+    const newlisting=new Listing(req.body.listing)
+    await newlisting.save();
+    
+    console.log(newlisting);
+    res.redirect("/listings");
+    // let newList = new Listing({
+    //     title:title,
+    //     description:description,
+    //     image:image,
+
+    // })
+})
+//show rout -> shwo data of all in details
+
+app.get("/listings/:id",async(req,res)=>{
+    let {id}=req.params;
+    const iddata= await Listing.findById(id);
+    console.log(iddata);
+    res.render("listing/show.ejs",{iddata});
+})
+
