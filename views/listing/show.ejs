@@ -11,7 +11,7 @@
     <ul>
         <li>Title:</span><%= iddata.title %></li>
     <li> description:</span><%=  iddata.description %></li>
-    <li>Price: &#8377;<%= iddata.price.toLocaleString("en-IN") %></li>
+    <li>Price: <%= iddata.price ? listing.price.toLocaleString("en-IN") : "N/A" %></li>
 
     <li>Location:</span><%= iddata.location %></li>
     <li>Country:</span><%= iddata.country %></li>

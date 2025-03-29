@@ -33,3 +33,35 @@ footer .f-info-links a:hover{
    align-items: space-evenly;
 
 }
+
+/* cards */
+.card{
+    border:none;
+    margin-bottom: 2rem;
+
+}
+.card-img-top{
+    width: 100% !important;
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding:0;
+}
+.card-text p{
+    font-weight: 400;
+    color: #222222;
+}
+.listing-link{
+    text-decoration: none;
+    color: #222222;
+}
+/* card effect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity:0.2;
+    background-color: #ebebeb;
+
+}
