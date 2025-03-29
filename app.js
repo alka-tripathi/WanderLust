@@ -8,10 +8,12 @@ app.set("views",path.join(__dirname,"views"));
 
 app.use(express.urlencoded({extended:true}));
 
+const methodOvveride = require("method-override");
+app.use(methodOvveride("_method"));
+
 const mongoose = require("mongoose");
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-  
   }
 
 
@@ -84,5 +86,21 @@ app.get("/listings/:id",async(req,res)=>{
     const iddata= await Listing.findById(id);
     console.log(iddata);
     res.render("listing/show.ejs",{iddata});
+})
+
+
+//Edit route
+app.get("/listings/:id/edit",async(req,res)=>{
+    let {id}=req.params;
+
+    const allListing=await  Listing.findById(id);
+    res.render("listing/edit.ejs",{allListing});
+});
+
+//update Route
+app.put("/listings/:id",async(req,res)=>{
+    let {id}= req.params;
+    const lists=await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    res.redirect("/listings");
 })
 
