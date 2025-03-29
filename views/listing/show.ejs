@@ -1,21 +1,25 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+</head> -->
+<% layout("/layouts/boilerplate")  -%>
 <body>
     <h1>location id :<%= iddata._id %></h1>
     <ul>
         <li>Title:</span><%= iddata.title %></li>
-    <li> description:</span><%=  iddata.description %></li></p>
+    <li> description:</span><%=  iddata.description %></li>
     <li>Price: &#8377;<%= iddata.price.toLocaleString("en-IN") %></li>
 
     <li>Location:</span><%= iddata.location %></li>
     <li>Country:</span><%= iddata.country %></li>
     </ul>
 <a href="/listings/<%= iddata._id %>/edit">Edit Your Listings</a>
+<form action="/listings/<%= iddata._id %>?_method=DELETE" method="POST">
+    <button>Detele this listing</button>
+</form>
     
 
 

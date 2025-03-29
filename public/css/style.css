@@ -1,0 +1,35 @@
+body{
+    background-color: pink;
+}
+
+footer .f-info-links a{
+text-decoration: none;
+color:#222222;
+}
+
+footer .f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links{
+    width: 100%;
+    vertical-align: middle;
+}
+.f-info-socials{
+    width: 100%;
+    font-size: 1.5rem;
+    /* margin-right: 4rem; */
+}
+.f-info-socials i{
+    margin-right: 1rem;
+}
+
+.f-info{
+    text-align: center;
+   display: flex;
+   height: 7rem;
+   background-color: #ebebeb;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: space-evenly;
+
+}

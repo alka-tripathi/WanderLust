@@ -2,14 +2,21 @@ const express = require("express");
 const app=express();
 const Listing = require("./models/listing");
 
+
+
+
 const path = require("path");
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname,"public")));
 
 const methodOvveride = require("method-override");
 app.use(methodOvveride("_method"));
+
+const ejsMate = require("ejs-mate");
+app.engine("ejs",ejsMate);
 
 const mongoose = require("mongoose");
 async function main() {
@@ -104,3 +111,10 @@ app.put("/listings/:id",async(req,res)=>{
     res.redirect("/listings");
 })
 
+//delete Route
+app.delete("/listings/:id",async(req,res)=>{
+    let {id}= req.params;
+    let deleteList = await Listing.findByIdAndDelete(id);
+    console.log(deleteList);
+   res.redirect("/listings");
+})
