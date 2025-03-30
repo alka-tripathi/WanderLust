@@ -6,29 +6,64 @@
     <title>New Form</title>
 </head> -->
 <% layout("/layouts/boilerplate")  -%>
+
 <body>
     <h1>Create the new listing</h1>
+    <div class="row">
+        <div class="col-8 offset-2">
     <form action="/listings" method="POST">
-        <input type="text" name="listing[title]" placeholder="Enter Tilte">
-        <br/>
-        <input type="text" name="listing[description]" placeholder="Enter Description">
-        <br/>
+
+<div class="mb-3">
+    <br/><br/>
+    <label for="title" class="form-label">Title</label>
+
+        <input
+         type="text" name="listing[title]" 
+        placeholder="Add a Title" 
+        class="form-control">
+</div>
+<div  class="mb-3">
+    <label for="title" class="form-label">Description</label>
+    <textarea class="form-control"  name="listing[description]" ></textarea>
+  
+</div>
+    
+       <div  class="mb-3">
+        <label for="title" class="form-label">Image Link</label>
         <input type="text" name="listing[image]" placeholder="Enter Image URL/Link">
-        <br/>
-        <br/>
+       </div>
+       
+    
+<div class="row">
+<div  class="mb-3 col-md-4">
+        <label for="title" class="form-label">Price</label>
+        <input type="number" name="listing[price]" placeholder="1200" class="form-control">
+</div>
+<div  class="mb-3 col-md-8">
 
-        <input type="number" name="listing[price]" placeholder="Enter price">
-        <br/>
-        <input type="text" name="listing[location]" placeholder="Enter Location">
-        <br/>
-        <br>
-        <input type="text" name="listing[country]" placeholder="Enter Country">
+    <label for="title" class="form-label">Country</label>
+    <input type="text" name="listing[country]" placeholder="India" class="form-control">
 
-        <button>Add New</button>
+</div>
+</div>
+       
+<div  class="mb-3">
+    <label for="title" class="form-label">Location</label>
+    <input type="text" name="listing[location]" placeholder="Enter Location" class="form-control">
+</div>
+       
+
+
+<br/> <br/>
+
+
+        <button class="btn btn-dark  add-btn">Add New</button>
         
-
+        <br/> <br/>
 
     </form>
+</div>
+</div>
     
 </body>
 </html>

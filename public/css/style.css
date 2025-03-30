@@ -1,6 +1,14 @@
-body{
+/* body{
     background-color: pink;
-}
+} */
+ body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+ }
+ .container{
+    flex:1;
+ }
 
 footer .f-info-links a{
 text-decoration: none;
@@ -64,4 +72,10 @@ footer .f-info-links a:hover{
     opacity:0.2;
     background-color: #ebebeb;
 
+}
+
+/* new page */
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
 }
