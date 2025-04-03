@@ -79,3 +79,18 @@ footer .f-info-links a:hover{
     background-color: #fe424d !important;
     border: none !important;
 }
+.editBtn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* show page */
+.show-img{
+    height: 34vh;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+
+}

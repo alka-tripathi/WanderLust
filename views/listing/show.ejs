@@ -1,27 +1,43 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head> -->
+
 <% layout("/layouts/boilerplate")  -%>
-<body>
-    <h1>location id :<%= iddata._id %></h1>
-    <ul>
-        <li>Title:</span><%= iddata.title %></li>
-    <li> description:</span><%=  iddata.description %></li>
-    <li>Price: <%= iddata.price ? listing.price.toLocaleString("en-IN") : "N/A" %></li>
 
-    <li>Location:</span><%= iddata.location %></li>
-    <li>Country:</span><%= iddata.country %></li>
-    </ul>
-<a href="/listings/<%= iddata._id %>/edit">Edit Your Listings</a>
-<form action="/listings/<%= iddata._id %>?_method=DELETE" method="POST">
-    <button>Detele this listing</button>
-</form>
+
+
+    <!-- <h1>location id :<%= iddata._id %></h1> -->
+     <h3>Listing Details:<%= iddata._id %></h3>
+
+<div class="row mt-4">
+    <div class="col-8 offset-2">
+
+     <div class="card col-6 offset-2">
+      
+            <img src="<%= iddata.image %>" class="card-img-top show-img" alt="Listing Image">
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= iddata.title %></b> <br>
+                <%=  iddata.description %><br>
+                <%= iddata.price ? listing.price.toLocaleString("en-IN") : "N/A" %><br>
+
+
+                <%= iddata.location %><br>
+                <%= iddata.country %>
+
+              </p>
+            </div>
+          </div>
+
+<div class="btns">
+    <a href="/listings/<%= iddata._id %>/edit" class="btn btn-dark col-1 offset-2 editBtn">Edit Your Listings</a>
+
+
+    <form action="/listings/<%= iddata._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-dark  offset-4">Detele this listing</button>
+    </form>
+</div>
+
     
-
+</div>
+</div>
 
 </body>
 </html>

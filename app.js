@@ -71,14 +71,19 @@ app.get("/listings/new",(req,res)=>{
 })
 
 //POST request
-app.post("/listings",async(req,res)=>{
+app.post("/listings",async(req,res,next)=>{
     // let {title,description,image,price,location,country}=req.body;
     // let listing=req.body.listing;
+   try{
     const newlisting=new Listing(req.body.listing)
     await newlisting.save();
     
     console.log(newlisting);
     res.redirect("/listings");
+   }
+   catch(err){
+    next(err);
+   }
     // let newList = new Listing({
     //     title:title,
     //     description:description,
@@ -118,3 +123,10 @@ app.delete("/listings/:id",async(req,res)=>{
     console.log(deleteList);
    res.redirect("/listings");
 })
+
+
+
+//middleware
+app.use((err,res,req,next)=>{
+    res.send("something wents wrong");
+});

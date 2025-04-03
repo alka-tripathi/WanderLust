@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Form</title>
-</head>
+</head> -->
+<% layout("/layouts/boilerplate")  -%>
 <body>
     <!DOCTYPE html>
     <html lang="en">
@@ -16,31 +17,62 @@
     </head>
     <body>
         <h1>Edit the  listing</h1>
-        <form  method="POST"  action="/listings/<%= allListing._id %>?_method=PUT">
-            <input type="text" name="listing[title]" value="<%= allListing.title %>">
-            <br/>
-            <input type="text" name="listing[description]"  value="<%= allListing.description %>">
-            <br/>
-            <input type="text" name="listing[image]"  value="<%= allListing.image %>">
-            <br/>
-            <br/>
+        <div class="row">
+            <div class="col-8 offset-2">
+        <form  method="POST"  action="/listings/<%= allListing._id %>?_method=PUT"  novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+            <input type="text" name="listing[title]" value="<%= allListing.title %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            
+            <label for="title" class="form-label">Description</label>
+ 
+         <textarea name="listing[description]"   class="form-control" required><%= allListing.description %></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label"  required>Image Link</label>
+<input type="text" name="listing[image]"  value="<%= allListing.image %>" class="form-control" required>
+            </div>
+
+            <div class="row">
+                
+   
+        <div class="mb-3 col-md-4">
+            <label for="image" class="form-label">Price</label>
+        <input type="number" name="listing[price]"  value="<%= allListing.price %> " class="form-control" required>
+        
+      </div>
+  
     
-            <input type="number" name="listing[price]"  value="<%= allListing.price %> ">
-            <br/>
-            <input type="text" name="listing[location]"  value="<%= allListing.location %>">
-            <br/>
-            <br>
-            <input type="text" name="listing[country]"  value="<%= allListing.country %>">
-    
-            <button>Edit Done</button>
+          
+
+          <div class="mb-3 col-md-8">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="listing[location]"  value="<%= allListing.location %>" class="form-control" required>
+            <div class="valid-feedback">Location Exists!</div>
+            <div class="invalid-feedback">Location doesn't Exists</div>
+
+        
+        </div>
+    </div>
+        <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+            <input type="text" name="listing[country]"  value="<%= allListing.country %>" class="form-control" required>
+
+            <div class="vaild-feedback">Country is valid</div>
+            <div class="invalid-feedback">Country is invalid</div>
+          </div>
+            <button class="btn btn-dark editBtn mt-4">Edit Done</button>
             
     
     
         </form>
-        
+    </div>
+    </div>
     </body>
     </html>
 
-    
+    <script src="/js/script.js"></script>
 </body>
 </html>
