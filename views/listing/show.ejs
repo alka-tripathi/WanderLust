@@ -34,6 +34,23 @@
     </form>
 </div>
 
+<!-- review section -->
+ <div class="col-8 offset-3 mb-3">
+  <hr/>
+  <h4>Leave a Review</h4>
+  <form action="/listings/<% = iddata.id %>/review" method="POST">
+    <div class="mb-3 mt-3">
+      <label for="rating" class="form-label">Rating</label>
+      <input type="text"
+      type="range"
+      min="1"
+      id="rating"
+      name="review[rating]"
+      class="form-range">
+    </div>
+  </form>
+ </div>
+
     
 </div>
 </div>

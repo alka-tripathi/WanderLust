@@ -1,6 +1,7 @@
 const express = require("express");
 const app=express();
 const Listing = require("./models/listing");
+const   Review =require("./models/review.js");
 
 
 const wrapAsync = require("./utils/wrapAsync.js");
@@ -126,10 +127,21 @@ app.delete("/listings/:id",wrapAsync(async(req,res)=>{
    res.redirect("/listings");
 }));
 
+
+//review path
+app.get("/listings/:id/reviews", async(req,res)=>{
+   let listing = await Listing.findById()
+
+
+})
+
 //standard response  -> if route is send to another path
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found"));
 })
+
+
+
 
 
 
